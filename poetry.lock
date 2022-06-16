@@ -1,0 +1,34 @@
+[[package]]
+name = "python-decouple"
+version = "3.6"
+description = "Strict separation of settings from code."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "slack-sdk"
+version = "3.17.1"
+description = "The Slack API Platform SDK for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.extras]
+optional = ["aiodns (>1.0)", "aiohttp (>=3.7.3,<4)", "boto3 (<=2)", "SQLAlchemy (>=1,<2)", "websockets (>=10,<11)", "websocket-client (>=1,<2)"]
+testing = ["pytest (>=6.2.5,<7)", "pytest-asyncio (<1)", "Flask-Sockets (>=0.2,<1)", "Flask (>=1,<2)", "Werkzeug (<2)", "itsdangerous (==1.1.0)", "Jinja2 (==3.0.3)", "pytest-cov (>=2,<3)", "codecov (>=2,<3)", "flake8 (>=4,<5)", "black (==22.3.0)", "click (==8.0.4)", "psutil (>=5,<6)", "databases (>=0.5)", "boto3 (<=2)", "moto (>=3,<4)"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.9"
+content-hash = "60dfb649d9cc984af81ebf40c0dd40d37f640a3bed355f5182865d8b3ceaa392"
+
+[metadata.files]
+python-decouple = [
+    { file = "python-decouple-3.6.tar.gz", hash = "sha256:2838cdf77a5cf127d7e8b339ce14c25bceb3af3e674e039d4901ba16359968c7" },
+    { file = "python_decouple-3.6-py3-none-any.whl", hash = "sha256:6cf502dc963a5c642ea5ead069847df3d916a6420cad5599185de6bab11d8c2e" },
+]
+slack-sdk = [
+    { file = "slack_sdk-3.17.1-py2.py3-none-any.whl", hash = "sha256:50fa984d9513226d3f982ba7d596d3d68127f58865f83dcc1825f52012e908ab" },
+    { file = "slack_sdk-3.17.1.tar.gz", hash = "sha256:20a170698fa1affde9c642d78ea1e8947e9dd37920685cb0f2c5a2df7c48abd4" },
+]
