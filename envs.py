@@ -1,4 +1,13 @@
-from decouple import config
+from pydantic import BaseSettings
 
-SLACK_WEBHOOK_URL = config("SLACK_WEBHOOK_URL")
-SLACK_BOT_TOKEN = config("SLACK_BOT_TOKEN")
+
+class Settings(BaseSettings):
+    SLACK_WEBHOOK_URL: str
+    SLACK_BOT_TOKEN: str
+
+    class Config:
+        env_file = '../env.env'
+        env_file_encoding = 'utf-8'
+
+
+ENV = Settings()
