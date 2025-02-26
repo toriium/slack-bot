@@ -6,9 +6,10 @@ authors = ["Jorge Vasconcelos <jorge.r.p.v@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-slack-sdk = "^3.17.1"
-python-dotenv = "^0.20.0"
-pydantic = "^1.9.1"
+slack-sdk = "*"
+python-dotenv = "*"
+pydantic = "*"
+blockkit = "^1.9.2"
 
 
 
