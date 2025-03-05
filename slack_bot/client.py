@@ -1,6 +1,6 @@
 from slack_sdk import WebClient
 
-from envs import ENV, CHANNEL
+from envs import Settings, CHANNEL
 
 
-WEB_CLIENT = WebClient(token=ENV.SLACK_BOT_TOKEN)
+WEB_CLIENT = WebClient(token=Settings.SLACK_BOT_TOKEN)

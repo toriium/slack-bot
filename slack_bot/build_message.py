@@ -1,6 +1,9 @@
 import json
+from datetime import datetime, timezone
 
 from blockkit import Divider, Message, Section
+
+from slack_bot.channels import TEST_CHANNEL
 
 error_list = [
     {
@@ -29,8 +32,11 @@ def create_error_section(client_id: str, error_message: str):
 
 
 def main():
-    base_header = [
-        Section(text="Crawlers Logs"),
+    # Base Block
+    block_name = "BLOCK_NAME: [Crawlers Status]"
+    base_blocks = [
+        Section(text=block_name),
+        Section(text=f"Generated At: {datetime.now()}"),
         Divider(),
     ]
 
@@ -39,16 +45,23 @@ def main():
         blocks = create_error_section(client_id=error["client_id"],error_message= error["error_message"])
         error_block.extend(blocks)
 
-
-    payload = Message(
+    message = Message(
         blocks=[
-            *base_header,
+            *base_blocks,
             *error_block
         ]
-    ).build()
+    )
 
-    json_str = json.dumps(payload)
-    print(json_str)
+    blocks_payload = message.build()["blocks"]
+
+    now = datetime.now(timezone.utc)
+    start_of_day = datetime(now.year, now.month, now.day, tzinfo=timezone.utc).timestamp()
+
+    ts_old = TEST_CHANNEL.get_target_message(target_text=block_name, oldest_ts=start_of_day)
+    if ts_old:
+        TEST_CHANNEL.delete_message(ts=ts_old)
+
+    TEST_CHANNEL.post_message(blocks=blocks_payload)
 
 
 if __name__ == '__main__':

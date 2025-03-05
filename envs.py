@@ -1,22 +1,22 @@
 import os
 from pathlib import Path
 
-from pydantic import BaseSettings
+from dotenv import find_dotenv, load_dotenv
+
 
 ENV_PATH = os.path.dirname(os.path.realpath(__file__))
 ENV_PATH = Path(ENV_PATH + '/env.env')
 
-
-class Settings(BaseSettings):
-    SLACK_WEBHOOK_URL: str
-    SLACK_BOT_TOKEN: str
-    SLACK_USER: str
-
-    class Config:
-        env_file = ENV_PATH
-        env_file_encoding = 'utf-8'
+env_path = find_dotenv(ENV_PATH)
+load_dotenv(env_path)
 
 
-ENV = Settings()
+class Settings:
+    SLACK_WEBHOOK_URL= os.getenv('SLACK_WEBHOOK_URL')
+    SLACK_BOT_TOKEN= os.getenv('SLACK_BOT_TOKEN')
+    SLACK_USER = os.getenv('SLACK_USER')
+
+
+
 # CHANNEL = "#programming"
 CHANNEL = "C03L0LPBYD9"
